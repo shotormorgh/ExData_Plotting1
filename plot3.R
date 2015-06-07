@@ -15,6 +15,9 @@ plot3 <- function(){
       ## Create a new column that has both date and time in it
       data$DateTime <- with(data, as.POSIXct(paste(data$Date, data$Time), format="%Y-%m-%d %H:%M"))
       
+      ## Create the PNG device file
+      png ("plot3.png")
+      
       ## Create a plot by adding different lines
       plot(data$Sub_metering_1~data$DateTime, xlab="", type="l", ylab="Energy sub metering")
       lines(data$Sub_metering_2~data$DateTime, xlab="", type="l", col="red")
@@ -25,7 +28,7 @@ plot3 <- function(){
              lty=1)      
       
       ##  Copy to a local PNG file
-      dev.copy (png, file="./plot3.png")
+      ##dev.copy (png, file="./plot3.png")
       
       ## Close the device (complete the file creation)
       dev.off()
